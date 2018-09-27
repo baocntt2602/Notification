@@ -29,7 +29,6 @@ public class NotificationHelper extends ContextWrapper{
         baoChannel.enableVibration(true);
         baoChannel.setLightColor(R.color.colorPrimary);
         baoChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-
         getManager().createNotificationChannel(baoChannel);
     }
 
@@ -43,7 +42,6 @@ public class NotificationHelper extends ContextWrapper{
     public NotificationCompat.Builder getChannel1Notification (String title, String message) {
         Intent resultIntent = new Intent(this, UpdateActivity.class);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
         return new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setContentTitle(title)
                 .setContentText(message)

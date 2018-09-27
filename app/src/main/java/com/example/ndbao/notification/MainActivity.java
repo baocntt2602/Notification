@@ -16,7 +16,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     Button btnTao, btnDong;
-    int notificationId;
     private NotificationHelper notificationHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +35,9 @@ public class MainActivity extends AppCompatActivity {
         btnTao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                taoNotification("có thông báo", "nhấn vào để cập nhật");
+                NotificationCompat.Builder nb = notificationHelper.getChannel1Notification("có thông báo", "nhấn vào để cập nhật");
+                notificationHelper.getManager().notify(1, nb.build());
             }
         });
     }
-
-    private void taoNotification(String title, String message) {
-        NotificationCompat.Builder nb = notificationHelper.getChannel1Notification(title, message);
-        notificationHelper.getManager().notify(1, nb.build());
-    }
-
 }
